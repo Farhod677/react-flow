@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import ReactFlow, { removeElements, addEdge, Background } from 'react-flow-renderer';
+import ReactFlow, { removeElements, addEdge, Background, MiniMap, Controls } from 'react-flow-renderer';
 
 function App() {
   const initialElements = [
@@ -47,6 +47,22 @@ function App() {
           gap={10}
           size={1}
         />
+        <MiniMap
+          nodeColor={(node) => {
+            switch (node.type) {
+              case 'input':
+                return 'red';
+              case 'default':
+                return '#00ff00';
+              case 'output':
+                return 'rgb(0,0,255)';
+              default:
+                return '#eee';
+            }
+          }}
+          nodeStrokeWidth={3}
+        />
+        <Controls />
       </ReactFlow>
     </div>
   );
